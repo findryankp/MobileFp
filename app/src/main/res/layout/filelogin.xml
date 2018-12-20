@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/content_frame"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/NRPMhs"
+            android:paddingTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="100dp"
+            android:hint="NRP"/>
+
+        <EditText
+            android:id="@+id/PasswordNRP"
+            android:paddingTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginBottom="10dp"
+            android:hint="Password"/>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_predict"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:text="Masuk"
+            android:onClick="MasukLogin"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

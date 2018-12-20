@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/verification"
+        android:title="Predict" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/database"
+        android:title="Database" />
+
+    <item
+        android:id="@+id/navigation_qrcode"
+        android:icon="@drawable/qr_code"
+        android:title="Sign In" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/upload"
+        android:title="Kirim" />
+
+</menu>

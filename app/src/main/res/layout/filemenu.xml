@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_train1"
+            android:layout_marginTop="10dp"
+            android:layout_width="117dp"
+            android:layout_height="70dp"
+            android:onClick="Absen"
+            android:text="Absen"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_train"
+            android:layout_marginTop="10dp"
+            android:layout_width="117dp"
+            android:layout_height="70dp"
+            android:text="Database"
+            android:onClick="Database"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/textview4"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:text="FOTO :"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_foto2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:onClick="Predict"
+            android:text="Predict"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_foto"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:onClick="Kirim"
+            android:text="Kirim Foto"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_foto1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:onClick="Train"
+            android:text="Train Foto"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/textview"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:text="TTD :"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:onClick="Predict_TTD"
+            android:text="Predict"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:onClick="Kirim_TTD"
+            android:text="Kirim TTD"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:onClick="Train_TTD"
+            android:text="Train TTD"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
