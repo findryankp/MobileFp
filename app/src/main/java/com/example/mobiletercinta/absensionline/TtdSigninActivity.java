@@ -1,5 +1,5 @@
 package com.example.mobiletercinta.absensionline;
-
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignatureActivity extends AppCompatActivity {
+public class TtdSigninActivity extends AppCompatActivity {
 
     Bitmap bitmap;
     Button clear,save, kirimTTD2, absenTTD;
@@ -39,7 +39,7 @@ public class SignatureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signature);
+        setContentView(R.layout.absensignature);
 
         signatureView =  (SignatureView) findViewById(R.id.signature_view);
         clear = (Button) findViewById(R.id.clear);
@@ -62,17 +62,66 @@ public class SignatureActivity extends AppCompatActivity {
             }
         });
 
-        kirimTTD2.setOnClickListener(new View.OnClickListener() {
+        absenTTD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bitmap = signatureView.getSignatureBitmap();
-                path = kirimTTD2(bitmap);
+                path = absenTTD(bitmap);
+            }
+        });
+    }
+
+
+    public String absenTTD(Bitmap myBitmap){
+
+        //region DATA-DATA USER
+        ActivityLogin activityLogin = new ActivityLogin();
+        final String id_user = activityLogin.NRPMhs.getText().toString();
+        final String password_user = activityLogin.PasswordNRP.getText().toString();
+        SigninActivity signinActivity = new SigninActivity();
+        final String lati = signinActivity.latitude1;
+        final String longi = signinActivity.longitude1;
+        final String agenda = signinActivity.agenda;
+//        final String id_user = "5115100035";
+//        final String password_user = "F1ndryan";
+//        final String lati = "-7.27935080";
+//        final String longi = "112.79754800";
+//        final String agenda = "mobile_18";
+        //endregion
+
+        //region CONVERT IMAGE TTD
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        String myBase64Image = encodeToBase64(myBitmap, Bitmap.CompressFormat.JPEG, 100);
+        //endregion
+
+        //region API ACTION
+        final ApiInterface api = Server.getclient().create(ApiInterface.class);
+        Log.d("test", "onImage: "+myBase64Image);
+        JSONObject paramObject = new JSONObject();
+        final long StartTime = new Date().getTime();
+        Call<ResponseApi> kirim =api.signinTTD(id_user, password_user,"data:image/jpeg;base64,"+myBase64Image,
+                lati,longi,agenda);
+        kirim.enqueue(new Callback<ResponseApi>() {
+            @Override
+            public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {
+                final long EndTime = new Date().getTime();
+                final long delta = EndTime - StartTime;
+                String hasil = response.body().getMessage();
+                Toast.makeText(TtdSigninActivity.this, hasil, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseApi> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(TtdSigninActivity.this, "error", Toast.LENGTH_LONG).show();
             }
         });
 
+        //endregion
+        return "";
     }
 
-    public String kirimTTD2(Bitmap myBitmap) {
+    public String saveImage(Bitmap myBitmap) {
 
         //region DATA-DATA USER
         ActivityLogin activityLogin = new ActivityLogin();
@@ -92,47 +141,6 @@ public class SignatureActivity extends AppCompatActivity {
         Log.d("test", "onImage: "+myBase64Image);
         JSONObject paramObject = new JSONObject();
         final long StartTime = new Date().getTime();
-        Call<ResponseApi> kirim =api.kirimTTD(id_user, password_user,"data:image/jpeg;base64,"+myBase64Image);
-        kirim.enqueue(new Callback<ResponseApi>() {
-            @Override
-            public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {
-                final long EndTime = new Date().getTime();
-                final long delta = EndTime - StartTime;
-                String hasil = response.body().getMessage();
-                Toast.makeText(SignatureActivity.this, hasil, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<ResponseApi> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(SignatureActivity.this, "error", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        //endregion
-        return  "";
-    }
-
-    public String saveImage(Bitmap myBitmap) {
-
-        //region DATA-DATA USER
-        ActivityLogin activityLogin = new ActivityLogin();
-//        final String id_user = activityLogin.NRPMhs.getText().toString();
-//        final String password_user = activityLogin.PasswordNRP.getText().toString();
-        final String id_user = "5115100035";
-        final String password_user = "F1ndryan";
-        //endregion
-
-        //region CONVERT IMAGE TTD
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        String myBase64Image = encodeToBase64(myBitmap, Bitmap.CompressFormat.JPEG, 100);
-        //endregion
-
-        //region API ACTION
-        final ApiInterface api = Server.getclient().create(ApiInterface.class);
-        Log.d("test", "onImage: "+myBase64Image);
-        JSONObject paramObject = new JSONObject();
-        final long StartTime = new Date().getTime();
         Call<ResponseApi> kirim =api.predictTTD(id_user, password_user,"data:image/jpeg;base64,"+myBase64Image);
         kirim.enqueue(new Callback<ResponseApi>() {
             @Override
@@ -140,13 +148,13 @@ public class SignatureActivity extends AppCompatActivity {
                 final long EndTime = new Date().getTime();
                 final long delta = EndTime - StartTime;
                 String hasil = response.body().getMessage();
-                Toast.makeText(SignatureActivity.this, hasil, Toast.LENGTH_LONG).show();
+                Toast.makeText(TtdSigninActivity.this, hasil, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<ResponseApi> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(SignatureActivity.this, "error", Toast.LENGTH_LONG).show();
+                Toast.makeText(TtdSigninActivity.this, "error", Toast.LENGTH_LONG).show();
             }
         });
         //endregion

@@ -43,7 +43,7 @@ public class QRFragment extends Fragment implements ZXingScannerView.ResultHandl
         AlertDialog alert1 = builder.create();
         alert1.show();
 
-        if(jarak < 100) {
+        if(jarak < 1000000) {
             Intent intent = new Intent(getActivity(), SigninActivity.class);
             intent.putExtra("agenda", ruangan);
             intent.putExtra("lat", latitude + "");

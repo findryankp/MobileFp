@@ -32,6 +32,9 @@ public class SigninActivity extends AppCompatActivity {
     private TextView tipe_activity;
     private EditText current_nrp;
     private EditText password_predict;
+    public static String latitude1;
+    public static String longitude1;
+    public static String agenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,9 @@ public class SigninActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+                    latitude1 = intent.getStringExtra("lat");
+                    longitude1 = intent.getStringExtra("lon");
+                    agenda = intent.getStringExtra("agenda");
                     Call<ResponseApi> signin = api.signin(userId, password, "data:image/jpeg;base64," + myBase64Image, intent.getStringExtra("lat"), intent.getStringExtra("lon"), intent.getStringExtra("agenda"));
                     signin.enqueue(new Callback<ResponseApi>() {
                         @Override
@@ -98,7 +104,7 @@ public class SigninActivity extends AppCompatActivity {
                             System.out.println(response.toString());
                             String message = response.body().getMessage();
                             Toast.makeText(SigninActivity.this, message, Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(SigninActivity.this, MainActivity.class);
+                            Intent intent = new Intent(SigninActivity.this, TtdSigninActivity.class);
                             startActivity(intent);
                         }
 

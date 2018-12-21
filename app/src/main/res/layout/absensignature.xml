@@ -32,19 +32,11 @@
             android:layout_height="70dp"
             android:id="@+id/save"
             android:text="Predict"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="150dp"
             android:layout_height="70dp"
-            android:id="@+id/kirimTTD2"
-            android:text="Kirim"/>
+            android:id="@+id/absenTTD"
+            android:text="Absen"/>
     </LinearLayout>
 </LinearLayout>

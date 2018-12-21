@@ -20,7 +20,7 @@ public class ActivityLogin extends AppCompatActivity {
         NRPMhs = (EditText) findViewById(R.id.NRPMhs);
         PasswordNRP = (EditText) findViewById(R.id.PasswordNRP);
 
-        Intent intent = new Intent(ActivityLogin.this, MainMenu.class);
+        Intent intent = new Intent(ActivityLogin.this, coba.class);
         startActivity(intent);
     }
 }

@@ -29,6 +29,7 @@ public class MainMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void Kirim(View view) {
         Intent intent = new Intent(MainMenu.this, Activitykirim.class);
         startActivity(intent);

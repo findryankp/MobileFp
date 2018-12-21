@@ -23,6 +23,7 @@
         </activity>
         <activity android:name="com.example.mobiletercinta.absensionline.Activitykirim"></activity>
         <activity android:name="com.example.mobiletercinta.absensionline.ActivityQR"></activity>
+        <activity android:name=".coba"></activity>
         <activity android:name="com.example.mobiletercinta.absensionline.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +33,9 @@
         </activity>
         <activity android:name="com.example.mobiletercinta.absensionline.SigninActivity" />
         <activity android:name="com.example.mobiletercinta.absensionline.GPSTrackerActivity" />
+        <activity android:name=".MenuTtdActivity"></activity>
+        <activity android:name=".MenuFotoActivity"></activity>
+        <activity android:name=".TtdSigninActivity"></activity>
     </application>
 
 </manifest>
